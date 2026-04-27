@@ -12,10 +12,13 @@ This is not presented as a completed product. It is an initial implementation ar
 
 Accessibility should be produced by default when reusable components are used correctly.
 
+This approach reduces reliance on post-implementation accessibility audits by shifting responsibility into system design.
+
 Instead of treating accessibility as a post-development audit item, this approach moves key accessibility requirements into:
 
 - component structure
 - component interfaces
+- type-level constraints
 - safe defaults
 - validation patterns
 - reusable documentation
@@ -24,32 +27,53 @@ Instead of treating accessibility as a post-development audit item, this approac
 
 ### Button
 
-The Button component enforces accessible naming by requiring either:
+The Button component enforces accessible naming at the type level by requiring either:
 
 - visible text, or
 - an ARIA label for icon-only buttons
 
-It also uses a safe default button type to prevent unintended form submission.
+It also demonstrates:
+
+- safe default button type (`button`)
+- disabled and loading state handling
+- loading-state announcement (`aria-busy`, `role="status"`)
+
+---
 
 ### Input
 
-The Input component enforces accessible naming by requiring either:
+The Input component enforces accessible naming at the type level by requiring either:
 
 - a visible label, or
 - an ARIA label
 
-It also connects validation errors to the input through accessible attributes.
+It also demonstrates:
+
+- programmatic error association (`aria-describedby`)
+- validation state exposure (`aria-invalid`)
+- consistent structure for label, input, and error messaging
+
+---
 
 ## Enforcement Patterns
 
 This repository demonstrates:
 
-- accessible name enforcement
+- accessible name enforcement (via TypeScript)
 - semantic HTML usage
 - correct label association
 - accessible error association
 - safe default behavior
 - component-level accessibility rules
+
+## Storybook
+
+Storybook is used to:
+
+- demonstrate valid usage patterns
+- surface component states (default, error, loading, disabled)
+- document compile-time enforcement through examples
+- provide a consistent visual reference with minimal styling
 
 ## Roadmap
 
