@@ -74,29 +74,29 @@ In simple terms, the system does not allow components to be used in ways that wo
 
 ### Input
 
-❌ Invalid  
-An input without an accessible name is not allowed.
+#### Accessible name is required
+
+❌ **Invalid usage**: Missing accessible name.
 
 ```tsx
 <Input value={email} onChange={handleChange} />
 ```
 
-✅ Valid
-A visible label provides an accessible name.
+✅ **Valid usage**: Provide a visible label.
 
 ```tsx
 <Input label="Email" value={email} onChange={handleChange} />
 ```
 
-❌ Invalid
-Providing both a visible label and an ARIA label creates conflicting definitions.
+### Avoid conflicting accessible names
+
+❌ **Invalid usage**: Both label and aria-label create a conflict.
 
 ```tsx
 <Input label="Email" ariaLabel="Email" value={email} onChange={handleChange} />
 ```
 
-✅ Valid
-An ARIA label can be used when no visible label is present.
+✅ **Valid usage**: Use aria-label only when no visible label is present.
 
 ```tsx
 <Input ariaLabel="Search" value={query} onChange={handleChange} />
