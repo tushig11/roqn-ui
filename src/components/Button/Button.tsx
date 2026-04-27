@@ -12,6 +12,7 @@ type BaseButtonProps = {
 type ButtonWithText = BaseButtonProps & {
   children: React.ReactNode;
   ariaLabel?: never;
+  icon?: React.ReactNode;
 };
 
 type IconOnlyButton = BaseButtonProps & {
@@ -24,6 +25,7 @@ export type ButtonProps = ButtonWithText | IconOnlyButton;
 
 export function Button({
   children,
+  icon,
   ariaLabel,
   onClick,
   type = 'button',
@@ -48,6 +50,14 @@ export function Button({
         </span>
       )}
 
+      {/* icon (hidden from screen readers) */}
+      {icon && (
+        <span className="btn__icon" aria-hidden="true">
+          {icon}
+        </span>
+      )}
+
+      {/* visible text */}
       {children && <span className="btn__content">{children}</span>}
     </button>
   );

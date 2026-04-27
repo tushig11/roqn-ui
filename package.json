@@ -1,7 +1,8 @@
 {
   "name": "roqn-ui",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/tushig11/roqn-ui.git",
   "author": "Gantushig Javkhlan <52178416+tushig11@users.noreply.github.com>",
   "license": "MIT",

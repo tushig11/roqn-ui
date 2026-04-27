@@ -51,3 +51,12 @@
 .btn__content {
   display: inline-flex;
 }
+
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn__content {
+  display: inline-flex;
+}
