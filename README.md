@@ -66,6 +66,42 @@ This repository demonstrates:
 - safe default behavior
 - component-level accessibility rules
 
+## Usage Constraints (Compile-time Enforcement)
+
+The component APIs are designed to prevent incorrect accessibility usage at compile time.
+
+In simple terms, the system does not allow components to be used in ways that would break accessibility requirements.
+
+### Input
+
+❌ Invalid  
+An input without an accessible name is not allowed.
+
+```tsx
+<Input value={email} onChange={handleChange} />
+```
+
+✅ Valid
+A visible label provides an accessible name.
+
+```tsx
+<Input label="Email" value={email} onChange={handleChange} />
+```
+
+❌ Invalid
+Providing both a visible label and an ARIA label creates conflicting definitions.
+
+```tsx
+<Input label="Email" ariaLabel="Email" value={email} onChange={handleChange} />
+```
+
+✅ Valid
+An ARIA label can be used when no visible label is present.
+
+```tsx
+<Input ariaLabel="Search" value={query} onChange={handleChange} />
+```
+
 ## Storybook
 
 Storybook is used to:
