@@ -1,10 +1,12 @@
 import React from 'react';
+import './button.css';
 
 type BaseButtonProps = {
   onClick?: () => void;
   type?: 'button' | 'submit';
   disabled?: boolean;
   loading?: boolean;
+  variant?: 'primary' | 'secondary';
 };
 
 type ButtonWithText = BaseButtonProps & {
@@ -13,6 +15,7 @@ type ButtonWithText = BaseButtonProps & {
 };
 
 type IconOnlyButton = BaseButtonProps & {
+  icon: React.ReactNode;
   children?: never;
   ariaLabel: string;
 };
@@ -26,6 +29,7 @@ export function Button({
   type = 'button',
   disabled = false,
   loading = false,
+  variant = 'primary',
 }: ButtonProps) {
   const isDisabled = disabled || loading;
 
@@ -36,14 +40,15 @@ export function Button({
       aria-label={!children ? ariaLabel : undefined}
       aria-busy={loading || undefined}
       onClick={!isDisabled ? onClick : undefined}
+      className={`btn btn--${variant} ${isDisabled ? 'btn--disabled' : ''}`}
     >
       {loading && (
-        <span role="status" aria-live="polite">
+        <span role="status" aria-live="polite" className="btn__loader">
           Loading...
         </span>
       )}
 
-      {children}
+      {children && <span className="btn__content">{children}</span>}
     </button>
   );
 }
