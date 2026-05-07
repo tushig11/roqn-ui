@@ -1,0 +1,74 @@
+.modal {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 480px;
+  width: calc(100% - 48px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  position: relative;
+  /* override browser default margin:auto so centering is done via ::backdrop */
+  margin: auto;
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* focus ring on dialog itself (fallback when no focusable children) */
+.modal:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.modal__title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  /* leave room so text doesn't run under the close button */
+  padding-right: 32px;
+  color: #111827;
+}
+
+.modal__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #374151;
+}
+
+/* close button — positioned in the top-right corner */
+.modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-family: sans-serif;
+  font-size: 13px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.modal__close:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.modal__close:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.modal__close-label {
+  /* visible to sighted users; aria-label on the button covers screen readers */
+  font-size: 13px;
+}
