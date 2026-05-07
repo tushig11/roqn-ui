@@ -55,6 +55,32 @@ It also demonstrates:
 
 ---
 
+### Modal
+
+The Modal component demonstrates accessibility-enforced dialog behavior using the native `<dialog>` element combined with API-level accessibility constraints.
+
+The component enforces accessible naming at the type level by requiring either:
+
+- a visible title, or
+- an ARIA label
+
+It also demonstrates:
+
+- focus restoration after close
+- initial focus management
+- keyboard focus trapping fallback behavior
+- Escape key handling
+- accessible modal semantics (`aria-modal`)
+- optional `alertdialog` behavior for destructive flows
+- configurable backdrop dismissal behavior
+- safe fallback focus behavior for text-only dialogs
+
+The implementation intentionally uses semantic platform behavior (`showModal()`) before introducing custom focus-management abstractions.
+
+This example is intended to demonstrate how accessibility behavior can be embedded directly into reusable component APIs and interaction defaults.
+
+---
+
 ## Enforcement Patterns
 
 This repository demonstrates:
@@ -114,8 +140,6 @@ Storybook is used to:
 ## Roadmap
 
 Planned examples:
-
-- Modal / Dialog with focus management
 - Design tokens for contrast and focus states
 - Form group patterns
 - Linting and validation examples
