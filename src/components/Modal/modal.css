@@ -1,8 +1,10 @@
+@import '../../tokens.css';
+
 .modal {
   font-family: sans-serif;
   font-size: 14px;
-  color: #111827;
-  border: 1px solid #e5e7eb;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 8px;
   padding: 24px;
   max-width: 480px;
@@ -19,8 +21,8 @@
 
 /* focus ring on dialog itself (fallback when no focusable children) */
 .modal:focus {
-  outline: 2px solid #2563eb;
-  outline-offset: 2px;
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
 }
 
 .modal__title {
@@ -29,14 +31,14 @@
   margin: 0 0 12px;
   /* leave room so text doesn't run under the close button */
   padding-right: 32px;
-  color: #111827;
+  color: var(--color-text-primary);
 }
 
 .modal__content {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  color: #374151;
+  color: var(--color-text-secondary);
 }
 
 /* close button — positioned in the top-right corner */
@@ -53,19 +55,19 @@
   padding: 4px 8px;
   font-family: sans-serif;
   font-size: 13px;
-  color: #6b7280;
+  color: var(--color-text-muted);
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
 .modal__close:hover {
-  background: #f3f4f6;
-  color: #111827;
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
 }
 
 .modal__close:focus {
-  outline: 2px solid #2563eb;
-  outline-offset: 2px;
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
 }
 
 .modal__close-label {

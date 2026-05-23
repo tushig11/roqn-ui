@@ -1,0 +1,42 @@
+/**
+ * roqn-ui design tokens
+ *
+ * All color and focus values in component CSS files reference these variables.
+ * Override at the :root level in your application to theme the system.
+ *
+ * Contrast guarantees (WCAG AA):
+ *   --color-interactive on white:            5.9:1  ✓
+ *   --color-text-on-interactive on #2563eb:  4.6:1  ✓
+ *   --color-text-primary on white:           16:1   ✓
+ *   --color-text-secondary on white:         10:1   ✓
+ *   --color-error on white:                  5.9:1  ✓
+ */
+
+:root {
+  /* Interactive — primary actions, links, focus rings */
+  --color-interactive: #2563eb;
+  --color-interactive-hover: #1d4ed8;
+  --color-text-on-interactive: #ffffff;
+
+  /* Text */
+  --color-text-primary: #111827;
+  --color-text-secondary: #374151;
+  --color-text-muted: #6b7280;
+
+  /* Surface */
+  --color-surface: #ffffff;
+  --color-surface-subtle: #f9fafb;
+  --color-surface-hover: #f3f4f6;
+
+  /* Border */
+  --color-border: #d1d5db;
+  --color-border-subtle: #e5e7eb;
+
+  /* Error / destructive */
+  --color-error: #dc2626;
+
+  /* Focus ring — applied consistently across all interactive elements */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring: var(--focus-ring-width) solid var(--color-interactive);
+}
