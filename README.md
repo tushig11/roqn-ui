@@ -81,6 +81,35 @@ This example is intended to demonstrate how accessibility behavior can be embedd
 
 ---
 
+### Design Tokens
+
+All color and focus values used across components are defined as CSS custom properties in `src/tokens.css` and referenced by component stylesheets via `@import`.
+
+Tokens are organized by intent, not value:
+
+| Token | Value | Usage |
+|---|---|---|
+| `--color-interactive` | `#2563eb` | Primary actions, focus rings |
+| `--color-interactive-hover` | `#1d4ed8` | Primary action hover |
+| `--color-text-on-interactive` | `#ffffff` | Text on primary surfaces |
+| `--color-text-primary` | `#111827` | Default body text |
+| `--color-text-secondary` | `#374151` | Supporting text |
+| `--color-text-muted` | `#6b7280` | De-emphasized text |
+| `--color-surface` | `#ffffff` | Default background |
+| `--color-surface-subtle` | `#f9fafb` | Slightly elevated surface |
+| `--color-surface-hover` | `#f3f4f6` | Hover background |
+| `--color-border` | `#d1d5db` | Standard border |
+| `--color-border-subtle` | `#e5e7eb` | Subtle border |
+| `--color-error` | `#dc2626` | Error and destructive states |
+| `--focus-ring` | `2px solid var(--color-interactive)` | Focus outline shorthand |
+| `--focus-ring-offset` | `2px` | Focus outline offset |
+
+All contrast pairings meet WCAG AA (4.5:1 for text, 3:1 for UI components).
+
+Tokens can be overridden at the `:root` level in a consuming application to theme the system without modifying component files.
+
+---
+
 ## Enforcement Patterns
 
 This repository demonstrates:
@@ -140,7 +169,6 @@ Storybook is used to:
 ## Roadmap
 
 Planned examples:
-- Design tokens for contrast and focus states
 - Form group patterns
 - Linting and validation examples
 - Documentation examples for downstream teams

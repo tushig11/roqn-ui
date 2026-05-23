@@ -1,3 +1,5 @@
+@import '../../tokens.css';
+
 .btn {
   font-family: sans-serif;
   font-size: 14px;
@@ -13,22 +15,22 @@
 
 /* variants */
 .btn--primary {
-  background: #2563eb;
-  color: white;
+  background: var(--color-interactive);
+  color: var(--color-text-on-interactive);
 }
 
 .btn--primary:hover:not(.btn--disabled) {
-  background: #1d4ed8;
+  background: var(--color-interactive-hover);
 }
 
 .btn--secondary {
-  background: white;
-  border-color: #d1d5db;
-  color: #111827;
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
 }
 
 .btn--secondary:hover:not(.btn--disabled) {
-  background: #f9fafb;
+  background: var(--color-surface-subtle);
 }
 
 /* disabled */
@@ -39,8 +41,8 @@
 
 /* focus (important for a11y) */
 .btn:focus {
-  outline: 2px solid #2563eb;
-  outline-offset: 2px;
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
 }
 
 /* loading */
@@ -55,8 +57,4 @@
 .btn__icon {
   display: inline-flex;
   align-items: center;
-}
-
-.btn__content {
-  display: inline-flex;
 }
