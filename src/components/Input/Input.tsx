@@ -5,6 +5,7 @@ type BaseProps = {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   error?: string;
+  required?: boolean;
 };
 
 type WithLabel = BaseProps & {
@@ -25,6 +26,7 @@ export function Input({
   value,
   onChange,
   error,
+  required = false,
 }: InputProps) {
   const id = useId();
   const errorId = error ? `${id}-error` : undefined;
@@ -34,6 +36,12 @@ export function Input({
       {label && (
         <label htmlFor={id} className="input-label">
           {label}
+          {required && (
+            <>
+              <span aria-hidden="true" className="input-label__required-mark"> *</span>
+              <span className="input__sr-only"> (required)</span>
+            </>
+          )}
         </label>
       )}
 
@@ -44,6 +52,7 @@ export function Input({
         aria-label={!label ? ariaLabel : undefined}
         aria-invalid={!!error}
         aria-describedby={errorId}
+        required={required}
         className={`input ${error ? 'input--error' : ''}`}
       />
 
