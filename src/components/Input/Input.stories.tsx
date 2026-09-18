@@ -50,6 +50,14 @@ const meta: Meta<typeof Input> = {
         type: { summary: 'string' },
       },
     },
+    required: {
+      control: 'boolean',
+      description: 'Marks the field as required. Renders a visible * and SR-only "(required)" next to the label, and sets the native required attribute on the input.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
   },
 };
 
@@ -95,6 +103,21 @@ export const WithError: Story = {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         error="Email is required."
+      />
+    );
+  },
+};
+
+export const Required: Story = {
+  render: () => {
+    const [email, setEmail] = useState('');
+
+    return (
+      <Input
+        label="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
       />
     );
   },
