@@ -36,6 +36,9 @@ export function Button({
   const isDisabled = disabled || loading;
 
   return (
+    // This is the sanctioned primitive implementation the roqn/no-raw-interactive-elements
+    // rule steers consumers toward — Button itself must render the native element.
+    // eslint-disable-next-line roqn/no-raw-interactive-elements
     <button
       type={type}
       disabled={isDisabled}
