@@ -175,6 +175,28 @@ In simple terms, the system does not allow components to be used in ways that wo
 <Input ariaLabel="Search" value={query} onChange={handleChange} />
 ```
 
+## Linting
+
+Type-level enforcement (above) covers this repository's own component APIs. It does not catch accessibility mistakes made with plain HTML/JSX elsewhere in a consuming codebase, so ESLint with [`eslint-plugin-jsx-a11y`](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y) is configured in `eslint.config.mjs` as a second, lint-time layer:
+
+```
+npm run lint
+```
+
+❌ **Caught by lint, not by types**: a raw button with no accessible name.
+
+```tsx
+<button onClick={handleSave}><Icon name="save" /></button>
+```
+
+✅ Give it a name, or use this repo's `Button`, which requires one at compile time.
+
+```tsx
+<button onClick={handleSave} aria-label="Save"><Icon name="save" /></button>
+```
+
+Rules can still produce false positives against a deliberate pattern. `Modal.tsx` disables `jsx-a11y/click-events-have-key-events` and `jsx-a11y/no-noninteractive-element-interactions` on its backdrop-click handler, with a comment explaining why: dismissal already has a keyboard equivalent (Escape), so the click handler is a mouse-only convenience, not a missing keyboard interaction. Any `eslint-disable` in this codebase should carry that kind of justification, not just suppress the rule.
+
 ## Storybook
 
 Storybook is used to:
@@ -187,5 +209,4 @@ Storybook is used to:
 ## Roadmap
 
 Planned examples:
-- Linting and validation examples
 - Documentation examples for downstream teams

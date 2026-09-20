@@ -154,6 +154,9 @@ export function Modal({
   }
 
   return (
+    // Backdrop dismissal (onClick below) is a mouse-only convenience; Escape
+    // (handled above) is the keyboard equivalent, so no key listener is needed.
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
     <dialog
       ref={dialogRef}
       // tabIndex={-1} makes the dialog a focusable fallback when it has no
