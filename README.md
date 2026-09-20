@@ -52,6 +52,24 @@ It also demonstrates:
 - programmatic error association (`aria-describedby`)
 - validation state exposure (`aria-invalid`)
 - consistent structure for label, input, and error messaging
+- accessible required-field annotation (visible `*` plus a screen-reader-only "(required)" cue, alongside the native `required` attribute)
+
+---
+
+### FormGroup
+
+The FormGroup component provides accessible grouping for related form controls (checkboxes, radios, inputs) using the native `<fieldset>`/`<legend>` primitive.
+
+The component enforces accessible naming at the type level by requiring either:
+
+- a visible legend, or
+- an ARIA label
+
+It also demonstrates:
+
+- group-level description and error messaging (`aria-describedby`)
+- accessible required-group annotation, matching the pattern used by Input
+- native fieldset/legend semantics instead of a `<div role="group">` approximation
 
 ---
 
@@ -169,6 +187,5 @@ Storybook is used to:
 ## Roadmap
 
 Planned examples:
-- Form group patterns
 - Linting and validation examples
 - Documentation examples for downstream teams
