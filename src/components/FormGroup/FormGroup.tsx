@@ -45,6 +45,7 @@ export function FormGroup({
     // control inside, which a <div role="group"> + aria-labelledby only
     // approximates. aria-label covers the rare case of a group whose name
     // shouldn't render visually.
+    // eslint-disable-next-line roqn/no-raw-interactive-elements -- this is that primitive
     <fieldset
       aria-label={!legend ? ariaLabel : undefined}
       aria-describedby={describedBy}

@@ -45,6 +45,8 @@ export function Input({
         </label>
       )}
 
+      {/* This is the sanctioned primitive implementation the roqn/no-raw-interactive-elements rule steers consumers toward. */}
+      {/* eslint-disable-next-line roqn/no-raw-interactive-elements -- this is that primitive */}
       <input
         id={id}
         value={value}
