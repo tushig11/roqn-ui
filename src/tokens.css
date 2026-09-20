@@ -5,11 +5,13 @@
  * Override at the :root level in your application to theme the system.
  *
  * Contrast guarantees (WCAG AA):
- *   --color-interactive on white:            5.9:1  ✓
- *   --color-text-on-interactive on #2563eb:  4.6:1  ✓
- *   --color-text-primary on white:           16:1   ✓
- *   --color-text-secondary on white:         10:1   ✓
- *   --color-error on white:                  5.9:1  ✓
+ *   --color-interactive on white:              5.17:1  ✓ (text/UI, needs 4.5:1)
+ *   --color-text-on-interactive on #2563eb:    5.17:1  ✓ (text, needs 4.5:1)
+ *   --color-text-primary on white:            17.74:1  ✓ (text, needs 4.5:1)
+ *   --color-text-secondary on white:          10.31:1  ✓ (text, needs 4.5:1)
+ *   --color-text-muted on white:               4.83:1  ✓ (text, needs 4.5:1)
+ *   --color-error on white:                    4.83:1  ✓ (text, needs 4.5:1)
+ *   --color-border on white (Input's border):  3.78:1  ✓ (UI component, needs 3:1)
  */
 
 :root {
@@ -29,7 +31,7 @@
   --color-surface-hover: #f3f4f6;
 
   /* Border */
-  --color-border: #d1d5db;
+  --color-border: #7a8494;
   --color-border-subtle: #e5e7eb;
 
   /* Error / destructive */

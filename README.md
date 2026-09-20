@@ -116,13 +116,13 @@ Tokens are organized by intent, not value:
 | `--color-surface` | `#ffffff` | Default background |
 | `--color-surface-subtle` | `#f9fafb` | Slightly elevated surface |
 | `--color-surface-hover` | `#f3f4f6` | Hover background |
-| `--color-border` | `#d1d5db` | Standard border |
-| `--color-border-subtle` | `#e5e7eb` | Subtle border |
+| `--color-border` | `#7a8494` | Standard border (e.g. `Input`) |
+| `--color-border-subtle` | `#e5e7eb` | Subtle, decorative border (large container framing) |
 | `--color-error` | `#dc2626` | Error and destructive states |
 | `--focus-ring` | `2px solid var(--color-interactive)` | Focus outline shorthand |
 | `--focus-ring-offset` | `2px` | Focus outline offset |
 
-All contrast pairings meet WCAG AA (4.5:1 for text, 3:1 for UI components).
+Text and interactive-surface tokens meet WCAG AA (4.5:1). `--color-border`, used as the visible boundary on `Input`, meets the 3:1 non-text contrast requirement for UI components. `--color-border-subtle` is decorative only (it frames `Modal`/`FormGroup` containers that are also delimited by spacing and shadow) and isn't held to that threshold. Exact ratios are documented in `src/tokens.css`.
 
 Tokens can be overridden at the `:root` level in a consuming application to theme the system without modifying component files.
 
@@ -183,16 +183,16 @@ Type-level enforcement (above) covers this repository's own component APIs. It d
 npm run lint
 ```
 
-❌ **Caught by lint, not by types**: a raw button with no accessible name.
+❌ **Caught by lint, not by types**: a raw icon-only button with no accessible name.
 
 ```tsx
-<button onClick={handleSave}><Icon name="save" /></button>
+<button onClick={handleSave}><span aria-hidden="true">💾</span></button>
 ```
 
-✅ Give it a name, or use this repo's `Button`, which requires one at compile time.
+✅ Give it a name, or use this repo's `Button`, whose `IconOnlyButton` type requires `ariaLabel` at compile time whenever there's no visible text.
 
 ```tsx
-<button onClick={handleSave} aria-label="Save"><Icon name="save" /></button>
+<Button ariaLabel="Save" icon="💾" onClick={handleSave} />
 ```
 
 ### Custom rules (`eslint-plugin-roqn`)
