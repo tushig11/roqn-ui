@@ -23,7 +23,7 @@ export default {
     schema: [],
     messages: {
       conflicting:
-        'Element has both "{{visibleAttr}}" and "{{ariaAttr}}" — pick one accessible name source, not both.',
+        'Element has both "{{visibleAttr}}" and "{{ariaAttr}}", pick one accessible name source, not both.',
     },
   },
   create(context) {

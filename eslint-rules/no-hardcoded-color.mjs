@@ -19,7 +19,7 @@ export default {
     schema: [],
     messages: {
       useToken:
-        'Hardcoded color "{{value}}" — reference a design token (e.g. var(--color-interactive)) from src/tokens.css instead.',
+        'Hardcoded color "{{value}}". Reference a design token (e.g. var(--color-interactive)) from src/tokens.css instead.',
     },
   },
   create(context) {

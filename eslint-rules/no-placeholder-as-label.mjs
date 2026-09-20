@@ -11,7 +11,7 @@ export default {
     schema: [],
     messages: {
       needsLabel:
-        'A placeholder is not an accessible label — placeholder text disappears on input and is skipped by some screen readers. Add aria-label, aria-labelledby, or associate a <label>.',
+        'A placeholder is not an accessible label. Placeholder text disappears on input and is skipped by some screen readers. Add aria-label, aria-labelledby, or associate a <label>.',
     },
   },
   create(context) {

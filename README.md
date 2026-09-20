@@ -197,14 +197,14 @@ npm run lint
 
 ### Custom rules (`eslint-plugin-roqn`)
 
-`jsx-a11y` is a generic ruleset — it knows nothing about this repo's own component APIs or design tokens. `eslint-rules/` is a small local ESLint plugin (wired into `eslint.config.mjs` as `roqn/*`) with rules specific to this system, each with unit tests under `eslint-rules/*.test.mjs` (run via `npm run test:lint-rules`).
+`jsx-a11y` is a generic ruleset. It knows nothing about this repo's own component APIs or design tokens. `eslint-rules/` is a small local ESLint plugin (wired into `eslint.config.mjs` as `roqn/*`) with rules specific to this system, each with unit tests under `eslint-rules/*.test.mjs` (run via `npm run test:lint-rules`).
 
 | Rule | Catches |
 |---|---|
 | `roqn/no-raw-interactive-elements` | A raw `<button>`, text-like `<input>`, `<dialog>`, or `<fieldset>` where this repo's `Button`/`Input`/`Modal`/`FormGroup` should be used instead. |
 | `roqn/no-hardcoded-color` | A hex/rgb/hsl color literal in a `style` prop or a `*color*`-named variable, instead of a token from `src/tokens.css`. |
-| `roqn/no-conflicting-accessible-name` | Both a visible-name prop (`label`/`legend`) and `ariaLabel` supplied on the same element — the same conflict the type-level `WithLabel \| WithAriaLabel` unions prevent, but for plain-JS consumers or anywhere the types get bypassed. |
-| `roqn/no-placeholder-as-label` | A native `<input>`/`<textarea>` using `placeholder` as its only accessible name — placeholder text disappears on input and isn't reliably announced. |
+| `roqn/no-conflicting-accessible-name` | Both a visible-name prop (`label`/`legend`) and `ariaLabel` supplied on the same element, the same conflict the type-level `WithLabel \| WithAriaLabel` unions prevent, but for plain-JS consumers or anywhere the types get bypassed. |
+| `roqn/no-placeholder-as-label` | A native `<input>`/`<textarea>` using `placeholder` as its only accessible name. Placeholder text disappears on input and isn't reliably announced. |
 | `roqn/require-eslint-disable-justification` | Any `eslint-disable` directive with no explanatory comment directly above it. |
 
 ❌ **Caught by `no-raw-interactive-elements`**: reaching for the native element this repo already wraps.
@@ -219,7 +219,7 @@ npm run lint
 <Input ariaLabel="Search" value={query} onChange={handleChange} />
 ```
 
-The four primitives themselves (`Button.tsx`, `Input.tsx`, `Modal.tsx`, `FormGroup.tsx`) are the sanctioned exception — each disables the rule at its one native element, with a comment saying so. `roqn/require-eslint-disable-justification` enforces that every such disable, including those, carries an explanation.
+The four primitives themselves (`Button.tsx`, `Input.tsx`, `Modal.tsx`, `FormGroup.tsx`) are the sanctioned exception. Each disables the rule at its one native element, with a comment saying so. `roqn/require-eslint-disable-justification` enforces that every such disable, including those, carries an explanation.
 
 Rules can still produce false positives against a deliberate pattern. `Modal.tsx` disables `jsx-a11y/click-events-have-key-events` and `jsx-a11y/no-noninteractive-element-interactions` on its backdrop-click handler, with a comment explaining why: dismissal already has a keyboard equivalent (Escape), so the click handler is a mouse-only convenience, not a missing keyboard interaction. Any `eslint-disable` in this codebase should carry that kind of justification, not just suppress the rule.
 
