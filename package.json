@@ -35,6 +35,7 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint .",
+    "test:lint-rules": "node --test eslint-rules/*.test.mjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   }

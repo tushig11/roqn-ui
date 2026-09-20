@@ -156,7 +156,9 @@ export function Modal({
   return (
     // Backdrop dismissal (onClick below) is a mouse-only convenience; Escape
     // (handled above) is the keyboard equivalent, so no key listener is needed.
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+    // <dialog> is also the sanctioned primitive the roqn/no-raw-interactive-elements
+    // rule steers consumers toward — Modal itself must render the native element.
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions, roqn/no-raw-interactive-elements
     <dialog
       ref={dialogRef}
       // tabIndex={-1} makes the dialog a focusable fallback when it has no
@@ -180,6 +182,10 @@ export function Modal({
       )}
       <div className="modal__content">{children}</div>
       {showCloseButton && (
+        // This is the sanctioned primitive implementation the roqn/no-raw-interactive-elements
+        // rule steers consumers toward — the roqn-ui Button component isn't reused here
+        // because a plain toggle button, not a full Button API surface, is all this needs.
+        // eslint-disable-next-line roqn/no-raw-interactive-elements -- this is that primitive
         <button
           type="button"
           onClick={onClose}

@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
+import roqn from './eslint-rules/index.mjs';
 
 export default tseslint.config(
   {
@@ -15,6 +16,14 @@ export default tseslint.config(
       parserOptions: {
         ecmaFeatures: { jsx: true },
       },
+    },
+    plugins: { roqn },
+    rules: {
+      'roqn/no-raw-interactive-elements': 'error',
+      'roqn/no-hardcoded-color': 'error',
+      'roqn/require-eslint-disable-justification': 'error',
+      'roqn/no-conflicting-accessible-name': 'error',
+      'roqn/no-placeholder-as-label': 'error',
     },
   }
 );
